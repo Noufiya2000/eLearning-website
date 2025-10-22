@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLEARNING - Online Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+/* home section*/
+:root {
+    --primary-color: #00B1D2; /* Teal/Cyan color */
+    --secondary-color: #0E2E50; /* Dark blue/Navy color */
+    --light-bg: #F8F9FA;
+    --dark-bg: #0E2E50;
+    --text-dark: #212529;
+    --text-light: #6C757D;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    background-image: url("./bg-image.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+/* Section Headings */
+.section-subtitle {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+}
+
+.section-subtitle::before, .section-subtitle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.section-subtitle::before {
+    left: 0;
+}
+
+.section-subtitle::after {
+    right: 0;
+}
+
+/* --- Header & Navigation --- */
+.navbar {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--primary-color);
+}
+
+.btn-join {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-join:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+    color: var(--white);
+    background-color: rgba(0,0,0,0.5); /* Dark overlay */
+    background-blend-mode: multiply;
+}
+
+.hero-content {
+    max-width: 600px;
+    padding: 50px 0;
+}
+
+.hero-content .subtitle {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    margin-bottom: 30px;
+}
+
+.slider-arrows {
+    position: absolute;
+    right: 10%;
+    bottom: 50px;
+}
+
+.slider-arrows button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--white);
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.slider-arrows button:hover {
+    background: var(--primary-color);
+}
+
+/* --- Features Section --- */
+.features-section {
+    padding: 50px 0;
+    margin-top: -50px; /* Overlap with hero */
+    position: relative;
+    z-index: 10;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-box {
+    background-color: var(--white);
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+}
+
+.feature-box .icon {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.feature-box h3 {
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+}
+
+.feature-box p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.feature-box:hover{
+    background-color: #003366; /* dark blue */
+    transform: translateY(-10px); /* smooth lift */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.feature-box:hover h3,
+.feature-box:hover p {
+    color: white; /* text color turns white */
+}
+
+/* --- About Section --- */
+.about-section {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.about-content h2 {
+    font-size: 2.25rem;
+}
+
+.about-details {
+    display: flex;
+    margin: 20px 0;
+}
+
+.about-details ul {
+    margin-right: 30px;
+}
+
+.about-details ul li {
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.about-details .icon-sm {
+    color: var(--primary-color);
+    font-size: 0.7rem;
+    margin-right: 5px;
+}
+
+/* --- Popular Courses Section --- */
+.popular-courses-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* course card (used for popular courses grid) */
+.course-card {
+    background-color: var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.07);
+    text-align: left;
+}
+
+.course-image-container {
+    position: relative;
+}
+
+.course-image-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.course-actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 46, 80, 0.7); /* secondary-color with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.course-card:hover .course-actions {
+    opacity: 1;
+}
+
+.btn-action {
+    color: var(--white);
+    border: 1px solid var(--white);
+    padding: 8px 18px;
+    margin: 0 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.btn-action:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-action.primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-action.primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.course-body {
+    padding: 20px;
+}
+
+.course-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.course-rating {
+    color: #FFC107; /* Star color */
+    margin-bottom: 10px;
+}
+
+.course-rating .reviews {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.course-body h3 {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
+/* ===== Title Section ===== */
+.title-section {
+  text-align: center;
+  padding: 70px 20px 30px;
+  background: rgba(0, 0, 80, 0.8);
+  color: white;
+}
+
+.title-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: white;
+}
+
+.title-section p {
+  font-size: 18px;
+  opacity: 0.9;
+  color: white;
+}
+
+/* ===== Courses Section (categories grid) ===== */
+.courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
+  padding: 60px 80px;
+  background-color: #f4f6ff;
+}
+
+/* course-card (used also for categories) */
+/* Keep a second .course-card block (later in original) because original cascade used it.
+   This preserves the exact original visual outcome for the categories cards. */
+.course-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+
+.course-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color:white#002366;
+  font-weight: 600;
+}
+
+.course-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Hover Effect for categories card */
+.course-card:hover {
+  background-color: #002366;   /* Dark Blue background */
+  color: white;                /* White text */
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.course-card:hover h3,
+.course-card:hover p {
+  color: white;
+}
+
+/* --- Expert Instructors Section --- */
+.instructors-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.instructors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.instructor-card {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--light-bg);
+    border-radius: 5px;
+    padding-bottom: 20px;
+}
+
+.instructor-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.instructor-social {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.instructor-card:hover .instructor-social {
+    opacity: 1;
+}
+
+.instructor-social a {
+    color: var(--white);
+    margin: 0 5px;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.instructor-social a:hover {
+    background-color: var(--secondary-color);
+}
+
+.instructor-card h4 {
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+.instructor-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* --- Testimonial Section --- */
+.testimonial-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.testimonial-slider {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    max-width: 350px;
+    text-align: center;
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 5px solid var(--white);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.testimonial-card h4 {
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+.testimonial-card .profession {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.testimonial-text {
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.testimonial-text.transparent {
+    background-color: var(--white);
+    color: var(--text-light);
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.testimonial-card.active-testimonial .testimonial-text {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Footer --- */
+.footer-section {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-column h2 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+/* Quick Link */
+.quick-link ul li {
+    margin-bottom: 10px;
+}
+
+.quick-link ul li a {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.quick-link ul li a:hover {
+    color: var(--primary-color);
+}
+
+.quick-link ul li .fas {
+    font-size: 0.7rem;
+    margin-right: 10px;
+    transition: margin-left 0.3s;
+}
+
+.quick-link ul li a:hover .fas {
+    margin-left: 5px;
+}
+
+/* Contact */
+.contact p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact p .fas {
+    color: var(--primary-color);
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    background-color: var(--white);
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Newsletter */
+.newsletter p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.newsletter-form button :hover {
+    background-color: transparent;
+
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    z-index: 100;
+    transition: background-color 0.3s;
+}
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">eLEARNING</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="active">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                   
+                    <li><a href="contact.html">CONTACT</a></li>
+                
+                <a href="contact.html" class="btn-join">Join Now</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section" >
+        <div class="container hero-content">
+            <p class="subtitle">BEST ONLINE COURSES</p>
+            <h1>Get Educated Online From Your Home</h1>
+            <p class="hero-text">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Read More</a>
+                <a href="#" class="btn-secondary">Join Now</a>
+            </div>
+            <div class="slider-arrows">
+                <button class="arrow-left"><i class="fas fa-chevron-left"></i></button>
+                <button class="arrow-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <br><br> <br><br> <br><br>
+
+    <section class="features-section">
+        <div class="container grid-4">
+            <div class="feature-box">
+                <i class="fas fa-graduation-cap icon"></i>
+                <h3>Skilled Instructors</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-globe icon"></i>
+                <h3>Online Classes</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+
+             
+            <div class="feature-box">
+                <i class="fas fa-home icon"></i>
+                <h3>Home Projects</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-book-open icon"></i>
+                <h3>Book Library</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="./Graduation Glow.jpeg" alt="Person holding books">
+            </div>
+            <div class="about-content">
+                <p class="section-subtitle">About Us</p>
+                <h2>Welcome to eLEARNING</h2>
+                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos. Clita erat ipsum et lorem et sit. Sed stet lorem sit clita duo justo magna dolor erat amet</p>
+                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos. Clita erat ipsum et lorem et sit. Sed stet lorem sit clita duo justo magna dolor erat amet</p>
+                <div class="about-details">
+                    <ul>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Skilled Instructors</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> International Certificate</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Online Classes</li>
+                    </ul>
+                    <ul>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Online Classes</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Skilled Instructors</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> International Certificate</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-primary">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <p class="section-subtitle">CATEGORIES</p>
+            <h2>Courses Categories</h2>
+           
+                    <img src="./image4.png" alt="Students collaborating">
+                    
+                        
+                    
+                
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-courses-section">
+        <div class="container">
+            <p class="section-subtitle">COURSES</p>
+            <h2>Popular Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image-container">
+                        <img src="./image1.jpeg" alt="Student in cap and gown watching video">
+                        <div class="course-actions">
+                            <a href="#" class="btn-action">Read More</a>
+                            <a href="#" class="btn-action primary">Join Now</a>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-price">50000.00</p>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span class="reviews">(123)</span>
+                        </div>
+                        <h3>Web Design & Development Course for Beginners</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user-alt icon-sm"></i> John Doe</span>
+                            <span><i class="far fa-clock icon-sm"></i> 1.49 Hrs</span>
+                            <span><i class="fas fa-user-friends icon-sm"></i> 30 Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image-container">
+                        <img src="./image2.jpeg" alt="Person working on a laptop">
+                        <div class="course-actions">
+                            <a href="#" class="btn-action">Read More</a>
+                            <a href="#" class="btn-action primary">Join Now</a>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-price">60000.00</p>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span class="reviews">(123)</span>
+                        </div>
+                        <h3>Web Design & Development Course for Beginners</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user-alt icon-sm"></i> John Doe</span>
+                            <span><i class="far fa-clock icon-sm"></i> 1.49 Hrs</span>
+                            <span><i class="fas fa-user-friends icon-sm"></i> 30 Students</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image-container">
+                        <img src="./image3.jpeg" alt="Student studying with a pencil">
+                        <div class="course-actions">
+                            <a href="#" class="btn-action">Read More</a>
+                            <a href="#" class="btn-action primary">Join Now</a>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <p class="course-price">80000.00</p>
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span class="reviews">(123)</span>
+                        </div>
+                        <h3>Web Design & Development Course for Beginners</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-user-alt icon-sm"></i> John Doe</span>
+                            <span><i class="far fa-clock icon-sm"></i> 1.49 Hrs</span>
+                            <span><i class="fas fa-user-friends icon-sm"></i> 30 Students</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Page Title -->
+  <section class="title-section">
+    <h1 >Explore Our Course Categories</h1>
+    <p>Choose your interest and start learning today!</p>
+  </section>
+
+  <!-- Course Categories -->
+  <section class="courses">
+    <div class="course-card">
+      <h3>Web Development</h3>
+      <p>Learn HTML, CSS, JavaScript, and modern frameworks.</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Data Science</h3>
+      <p>Master data analysis, Python, and machine learning.</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Graphic Design</h3>
+      <p>Unleash creativity with Photoshop, Illustrator, and Figma.</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Business Management</h3>
+      <p>Develop leadership, marketing, and management skills.</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Cyber Security</h3>
+      <p>Learn to protect systems and networks from cyber threats.</p>
+    </div>
+
+    <div class="course-card">
+      <h3>Artificial Intelligence</h3>
+      <p>Dive into deep learning and neural networks.</p>
+    </div>
+
+    <div class="course-card">
+    <h3>Mobile App Development</h3>
+    <p>Create Android and iOS apps using Flutter and React Native.</p>
+  </div>
+
+  <div class="course-card">
+    <h3>Cloud Computing</h3>
+    <p>Explore AWS, Azure, and Google Cloud for modern infrastructure.</p>
+  </div>
+  </section>
+
+    <section class="instructors-section">
+        <div class="container">
+            <p class="section-subtitle">INSTRUCTORS</p>
+            <h2>Expert Instructors</h2>
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <img src="./download (3).jpeg" alt="Instructor 1">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+                <div class="instructor-card">
+                    <img src="./download (4).jpeg" alt="Instructor 2">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+                <div class="instructor-card">
+                    <img src="./Create and sell online courses on platforms like Udemy or Teachable_.jpeg" alt="Instructor 3">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+               
+                <div class="instructor-card">
+                    <img src="./men portrait with laptop in his hand.jpeg" alt="Instructor 3">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+                <div class="instructor-card">
+                    <img src="./men with laptop in his hand.jpeg" alt="Instructor 4">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="container">
+            <p class="section-subtitle">TESTIMONIAL</p>
+            <h2>Our Students Say!</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <img src="./download (5).jpeg" alt="Client 1">
+                    <h4>Client Name</h4>
+                    <p class="profession">Profession</p>
+                    <div class="testimonial-text transparent">
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos. Clita erat ipsum et lorem et sit. Olita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                <div class="testimonial-card active-testimonial">
+                    <img src="./download (4).jpeg" alt="Client 2">
+                    <h4>Client Name</h4>
+                    <p class="profession">Profession</p>
+                    <div class="testimonial-text primary-bg">
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos. Clita erat ipsum et lorem et sit. Olita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="./download (3).jpeg" alt="Client 3">
+                    <h4>Client Name</h4>
+                    <p class="profession">Profession</p>
+                    <div class="testimonial-text transparent">
+                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos. Clita erat ipsum et lorem et sit. Olita erat ipsum et lorem et sit.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <div class="container footer-grid">
+            <div class="footer-column quick-link">
+                <h2>Quick Link</h2>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Condition</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs & Help</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact">
+                <h2>Contact</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+                <p><i class="fas fa-phone-alt"></i> +012 345 67890</p>
+                <p><i class="fas fa-envelope"></i> info@example.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+           
+            <div class="footer-column newsletter">
+                <h2>JOIN NOW</h2>
+                
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button class="btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+       
+    </footer>
+
+    <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+</body>
+</html>

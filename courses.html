@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>eLEARNING - Courses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* --- Root Variables --- */
+    :root {
+      --primary-color: #00B1D2;
+      --secondary-color: #0E2E50;
+      --light-bg: #F8F9FA;
+      --dark-bg: #0E2E50;
+      --text-dark: #212529;
+      --text-light: #6C757D;
+      --white: #FFFFFF;
+    }
+
+    /* --- Reset & Base Styles --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-image: url("./color.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+      background-color: var(--white);
+      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+
+    .btn-join {
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 0 5px 5px 0;
+      margin-left: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-join:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* --- Section Headings --- */
+    .categories-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .categories-section h1 {
+      color: #f4f6ff;
+    }
+
+    /* --- Popular Courses --- */
+    .popular-courses-section {
+      padding: 80px 0;
+      background-color: var(--light-bg);
+      text-align: center;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .course-card {
+      background-color: var(--white);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 45px rgba(0, 0, 0, 0.07);
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .course-image-container {
+      position: relative;
+    }
+
+    .course-image-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .course-actions {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(14, 46, 80, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .course-card:hover .course-actions {
+      opacity: 1;
+    }
+
+    .btn-action {
+      color: var(--white);
+      border: 1px solid var(--white);
+      padding: 8px 18px;
+      margin: 0 5px;
+      border-radius: 3px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-action:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-action.primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-action.primary:hover {
+      background-color: var(--secondary-color);
+    }
+
+    .course-body {
+      padding: 20px;
+    }
+
+    .course-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .course-rating {
+      color: #FFC107;
+      margin-bottom: 10px;
+    }
+
+    .course-rating .reviews {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .course-body h3 {
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      min-height: 40px;
+    }
+
+    /* --- Title Section --- */
+    .title-section {
+      text-align: center;
+      padding: 70px 20px 30px;
+      background: rgba(0, 0, 80, 0.8);
+      color: white;
+    }
+
+    .title-section h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .title-section p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* --- Course Categories --- */
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      padding: 60px 80px;
+      background-color: #f4f6ff;
+    }
+
+    .courses .course-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .courses .course-card:hover {
+      background-color: #0a69a0;
+      color: white;
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .courses .course-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #0d6994;
+      font-weight: 600;
+    }
+
+    .courses .course-card p {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .courses .course-card:hover h3,
+    .courses .course-card:hover p {
+      color: white;
+    }
+
+   /* --- Footer --- */
+.footer-section {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-column h2 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    margin-left: 70px;
+}
+
+/* Quick Link */
+.quick-link ul li {
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+.quick-link ul li a {
+     
+    color: var(--text-light);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    
+}
+
+.quick-link ul li a:hover {
+    color: var(--primary-color);
+}
+
+.quick-link ul li .fas {
+    font-size: 0.7rem;
+    margin-right: 10px;
+    transition: margin-left 0.3s;
+}
+
+.quick-link ul li a:hover .fas {
+    margin-left: 5px;
+}
+
+/* Contact */
+.contact p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    
+}
+
+.contact p .fas {
+    color: var(--primary-color);
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    background-color: var(--white);
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Newsletter */
+.newsletter p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover Effect */
+.newsletter-form button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Active (Clicked) Effect */
+.newsletter-form button:active {
+  background-color: #007a94; /* Slightly darker shade of primary color */
+  transform: scale(0.95);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    z-index: 100;
+    transition: background-color 0.3s;
+}
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    z-index: 100;
+    transition: background-color 0.3s;
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="logo">eLEARNING</div>
+      <nav>
+        <ul>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="courses.html" class="active">COURSES</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="contact.html" class="btn-join">Join Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="categories-section">
+    <h1>COURSES</h1>
+  </div>
+
+  <img src="./image4.png" alt="Students collaborating">
+
+  <!-- Popular Courses -->
+  <section class="popular-courses-section">
+    <h2>Popular Courses</h2>
+    <div class="courses-grid">
+      <!-- Course 1 -->
+      <div class="course-card">
+        <div class="course-image-container">
+          <img src="./image1.jpeg" alt="">
+          <div class="course-actions">
+            <a href="#" class="btn-action">Read More</a>
+            <a href="#" class="btn-action primary">Join Now</a>
+          </div>
+        </div>
+        <div class="course-body">
+          <p class="course-price">50000.00</p>
+          <div class="course-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span class="reviews">(123)</span>
+          </div>
+          <h3>Web Design & Development Course for Beginners</h3>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card">
+        <div class="course-image-container">
+          <img src="./image2.jpeg" alt="">
+          <div class="course-actions">
+            <a href="#" class="btn-action">Read More</a>
+            <a href="#" class="btn-action primary">Join Now</a>
+          </div>
+        </div>
+        <div class="course-body">
+          <p class="course-price">60000.00</p>
+          <div class="course-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span class="reviews">(123)</span>
+          </div>
+          <h3>Web Design & Development Course for Beginners</h3>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card">
+        <div class="course-image-container">
+          <img src="./image3.jpeg" alt="">
+          <div class="course-actions">
+            <a href="#" class="btn-action">Read More</a>
+            <a href="#" class="btn-action primary">Join Now</a>
+          </div>
+        </div>
+        <div class="course-body">
+          <p class="course-price">80000.00</p>
+          <div class="course-rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span class="reviews">(123)</span>
+          </div>
+          <h3>Web Design & Development Course for Beginners</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Title Section -->
+  <section class="title-section">
+    <h1>Explore Our Course Categories</h1>
+    <p>Choose your interest and start learning today!</p>
+  </section>
+
+  <!-- Course Categories -->
+  <section class="courses">
+    <div class="course-card"><i class="fas fa-laptop-code"></i>
+      <h3>Web Development</h3>
+      <p>Learn HTML, CSS, JavaScript, and modern frameworks.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-database"></i>
+      <h3>Data Science</h3>
+      <p>Master data analysis, Python, and machine learning.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-paint-brush"></i>
+      <h3>Graphic Design</h3>
+      <p>Unleash creativity with Photoshop, Illustrator, and Figma.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-briefcase"></i>
+      <h3>Business Management</h3>
+      <p>Develop leadership, marketing, and management skills.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-shield-alt"></i>
+      <h3>Cyber Security</h3>
+      <p>Learn to protect systems and networks from cyber threats.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-robot"></i>
+      <h3>Artificial Intelligence</h3>
+      <p>Dive into deep learning and neural networks.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-mobile-alt"></i>
+      <h3>Mobile App Development</h3>
+      <p>Create Android and iOS apps using Flutter and React Native.</p>
+    </div>
+    <div class="course-card"><i class="fas fa-cloud"></i>
+      <h3>Cloud Computing</h3>
+      <p>Explore AWS, Azure, and Google Cloud for modern infrastructure.</p>
+    </div>
+  </section>
+
+     <footer class="footer-section">
+    <div class="footer-grid">
+      <div class="footer-column quick-link">
+        <h2>Quick Link</h2>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Condition</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs & Help</a></li>
+        </ul>
+      </div>
+      <div class="footer-column contact">
+        <h2>Contact</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone-alt"></i> +012 345 67890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column newsletter">
+        <h2>JOIN NOW</h2>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your Email">
+          <button>Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+  </body>
+</html>

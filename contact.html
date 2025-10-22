@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>eLEARNING - Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* ===== Root variables ===== */
+    :root{
+      --primary-color:#00B1D2;
+      --secondary-color:#0E2E50;
+      --light-bg:#F8F9FA;
+      --dark-bg:#0E2E50;
+      --text-dark:#212529;
+      --text-light:#6C757D;
+      --white:#fff;
+    }
+
+    /* ===== Reset & base ===== */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+    body{
+      line-height:1.6;
+      color:var(--text-dark);
+      background-image:url("./bg-image.jpeg");
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      scroll-behavior:smooth;
+    }
+    a{text-decoration:none;color:inherit;transition:color .3s;}
+    img{max-width:100%;display:block;}
+    ul{list-style:none;}
+
+    /* ===== Navbar ===== */
+    .navbar{
+      background-color:var(--white);
+      padding:15px 0;
+      box-shadow:0 2px 4px rgba(0,0,0,.05);
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:90%;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-color);}
+    nav ul{display:flex;align-items:center;}
+    nav ul li{margin:0 15px;}
+    nav ul li a{font-weight:500;color:var(--text-dark);}
+    nav ul li a:hover, nav ul li a.active{color:var(--primary-color);}
+    .btn-join{
+      background-color:var(--primary-color);
+      color:var(--white);
+      padding:10px 20px;
+      border-radius:0 5px 5px 0;
+      margin-left:20px;
+    }
+    .btn-join:hover{background-color:var(--secondary-color);}
+
+    /* ===== Page header ===== */
+    .page-header{
+      text-align:center;
+      padding:100px 20px;
+      background-color:rgba(0,0,0,0.6);
+      color:#fff;
+    }
+    .page-header h1{font-size:3rem;}
+
+    /* ===== Contact section ===== */
+    .contact-section{
+      max-width:1200px;
+      margin:50px auto;
+      padding:0 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+    .contact-card{
+      flex:1 1 48%;
+      background-color:var(--white);
+      border-radius:10px;
+      padding:30px 20px;
+      box-shadow:0 5px 15px rgba(0,0,0,.1);
+    }
+    .contact-card h2{margin-bottom:25px;color:var(--secondary-color);}
+
+    .contact-card form input,
+    .contact-card form textarea{
+      width:100%;
+      padding:12px 15px;
+      margin-bottom:15px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      font-size:1rem;
+    }
+
+    .contact-card form button{
+      background-color:var(--primary-color);
+      color:var(--white);
+      border:none;
+      padding:12px 25px;
+      border-radius:5px;
+      font-size:1rem;
+      cursor:pointer;
+      transition:background-color .3s, transform .15s;
+    }
+    .contact-card form button:hover{background-color:var(--secondary-color); transform:scale(1.03);}
+    .contact-card form button:active{background-color:#007a94; transform:scale(.97);}
+
+    .contact-info p{margin-bottom:15px;line-height:1.5;}
+    .contact-info strong{display:block;margin-bottom:5px;}
+
+    .social-icons a{
+      font-size:24px;
+      color:var(--primary-color);
+      margin-right:15px;
+      transition:color .3s;
+    }
+    .social-icons a:hover{color:var(--secondary-color);}
+
+    /* ===== Footer ===== */
+    .footer-section{
+      background-color:var(--dark-bg);
+      color:var(--white);
+      padding-top:80px;
+    }
+
+    .footer-grid{
+      width:90%;
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+      padding-bottom:50px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-column h2{font-size:1.5rem;margin-bottom:25px;padding-bottom:10px;position:relative;}
+
+    /* quick links */
+    .quick-link ul li{margin-bottom:10px;}
+    .quick-link ul li a{
+      color:var(--text-light);
+      font-size:.95rem;
+      display:flex;
+      align-items:center;
+      transition:color .3s;
+    }
+    .quick-link ul li a:hover{color:var(--primary-color);}
+    .quick-link ul li .fas{font-size:.7rem;margin-right:10px;transition:margin-left .3s;}
+    .quick-link ul li a:hover .fas{margin-left:5px;}
+
+    /* footer contact column */
+    .footer-column.contact p{
+      color:var(--text-light);
+      margin-bottom:15px;
+      display:flex;
+      align-items:flex-start;
+    }
+    .footer-column.contact p .fas{
+      color:var(--primary-color);
+      margin-right:10px;
+      margin-top:5px;
+      font-size:1rem;
+    }
+
+    .social-links a{
+      color:var(--primary-color);
+      background-color:var(--white);
+      width:35px;height:35px;
+      display:inline-flex;justify-content:center;align-items:center;border-radius:50%;
+      margin-right:5px;transition:background-color .3s,color .3s;
+    }
+    .social-links a:hover{background-color:var(--primary-color);color:var(--white);}
+
+    /* newsletter (footer) */
+    .newsletter-form{display:flex;overflow:hidden;border-radius:5px;}
+    .newsletter-form input{flex-grow:1;border:none;padding:10px 15px;font-size:1rem;}
+    .newsletter-form button{
+      background-color:var(--primary-color);
+      color:var(--white);
+      border:none;padding:10px 20px;font-size:1rem;cursor:pointer;
+      transition:background-color .3s, transform .15s;
+    }
+    .newsletter-form button:hover{background-color:var(--secondary-color);transform:scale(1.03);}
+    .newsletter-form button:active{background-color:#007a94;transform:scale(.97);}
+
+    /* responsive small screens */
+    @media (max-width:800px){
+      .contact-card{flex:1 1 100%;}
+      .footer-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-content">
+      <div class="logo">eLEARNING</div>
+      <nav>
+        <ul>
+          <li><a href="home.html" class="active">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="courses.html">COURSES</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="contact.html" class="btn-join">Join Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>CONTACT</h1>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-card">
+      <h2>Get In Touch</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="text" placeholder="Phone Number" required>
+        <input type="email" placeholder="Email" required>
+        <textarea rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Send Now</button>
+      </form>
+    </div>
+
+    <div class="contact-card contact-info">
+      <h2>Talk To Us</h2>
+      <p><strong>Email:</strong> eLearning@gmail.com</p>
+      <p><strong>Phone:</strong> 202-555-0188</p>
+      <p><strong>Address:</strong> 2727 Ocean Road, INDIA, 90264</p>
+      <div class="social-icons">
+        <p><strong>Follow Us:</strong></p>
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="#"><i class="fab fa-twitter-square"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-whatsapp-square"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-grid">
+      <div class="footer-column quick-link">
+        <h2>Quick Link</h2>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Condition</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs & Help</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column contact">
+        <h2>Contact</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone-alt"></i> +012 345 67890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column newsletter">
+        <h2>JOIN NOW</h2>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your Email">
+          <button type="button">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

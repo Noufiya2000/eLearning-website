@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>eLEARNING - CSS Only Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">             
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* ===== Root Variables ===== */
+        :root {
+            --primary-color: #00B1D2;
+            --secondary-color: #0E2E50;
+            --light-bg: #F8F9FA;
+            --dark-bg: #0E2E50;
+            --text-dark: #212529;
+            --text-light: #6C757D;
+            --white: #FFFFFF;
+        }
+
+        /* ===== Global Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            background: url("./bg-image.jpeg") center/cover no-repeat fixed;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-join {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 0 5px 5px 0;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-join:hover {
+            background: var(--secondary-color);
+        }
+
+        /* ===== Page Header ===== */
+        .page-header {
+            padding: 80px 0;
+            margin-bottom: 50px;
+            text-align: center;
+            background: url("./color.png") center/cover;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 3em;
+        }
+
+        /* ===== Buttons ===== */
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 30px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            border: 1px solid var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* ===== Features Section ===== */
+        .features-section {
+            padding: 180px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature-box {
+            background: var(--white);
+            padding: 30px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 0 45px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .feature-box .icon {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-box:hover {
+            background: #003366;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .feature-box:hover h3,
+        .feature-box:hover p {
+            color: white;
+        }
+
+        /* ===== About Section ===== */
+        .about-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 600px;
+            border-radius: 5px;
+        }
+
+        .about-content h2 {
+            font-size: 2.25rem;
+        }
+
+        .about-details {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .about-details ul {
+            margin-right: 30px;
+        }
+
+        .about-details li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .icon-sm {
+            color: var(--primary-color);
+            font-size: 0.7rem;
+            margin-right: 5px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== Instructors Section ===== */
+        .instructors-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .instructor-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--light-bg);
+            border-radius: 5px;
+            padding-bottom: 20px;
+        }
+
+        .instructor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .instructor-social {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .instructor-card:hover .instructor-social {
+            opacity: 1;
+        }
+
+        .instructor-social a {
+            color: var(--white);
+            background: var(--primary-color);
+            width: 35px;
+            height: 35px;
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .instructor-social a:hover {
+            background: var(--secondary-color);
+        }
+
+        .instructor-card h4 {
+            margin-top: 15px;
+        }
+
+        .instructor-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+/* --- Footer --- */
+.footer-section {
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding-top: 80px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-column h2 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    margin-left: 70px;
+}
+
+/* Quick Link */
+.quick-link ul li {
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+.quick-link ul li a {
+     
+    color: var(--text-light);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    
+}
+
+.quick-link ul li a:hover {
+    color: var(--primary-color);
+}
+
+.quick-link ul li .fas {
+    font-size: 0.7rem;
+    margin-right: 10px;
+    transition: margin-left 0.3s;
+}
+
+.quick-link ul li a:hover .fas {
+    margin-left: 5px;
+}
+
+/* Contact */
+.contact p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    
+}
+
+.contact p .fas {
+    color: var(--primary-color);
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    background-color: var(--white);
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Newsletter */
+.newsletter p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover Effect */
+.newsletter-form button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Active (Clicked) Effect */
+.newsletter-form button:active {
+  background-color: #007a94; /* Slightly darker shade of primary color */
+  transform: scale(0.95);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    z-index: 100;
+    transition: background-color 0.3s;
+}
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">eLEARNING</div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="active">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="courses.html">COURSES</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <a href="contact.html" class="btn-join">Join Now</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>ABOUT</h1>
+    </div>
+
+    <section class="features-section">
+        <div class="container grid-4">
+            <div class="feature-box">
+                <i class="fas fa-graduation-cap icon"></i>
+                <h3>Skilled Instructors</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-globe icon"></i>
+                <h3>Online Classes</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-home icon"></i>
+                <h3>Home Projects</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-book-open icon"></i>
+                <h3>Book Library</h3>
+                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="./Graduation Glow.jpeg" alt="About Image">
+            </div>
+            <div class="about-content">
+                <p class="section-subtitle">About Us</p>
+                <h2>Welcome to eLEARNING</h2>
+                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos...</p>
+                <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet clita et eos...</p>
+                <div class="about-details">
+                    <ul>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Skilled Instructors</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> International Certificate</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Online Classes</li>
+                    </ul>
+                    <ul>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Online Classes</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> Skilled Instructors</li>
+                        <li><i class="fas fa-chevron-right icon-sm"></i> International Certificate</li>
+                    </ul>
+                </div>
+                <a href="#" class="btn-primary">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="instructors-section">
+        <div class="container">
+            <p class="section-subtitle">Instructors</p>
+            <h1>Expert Instructors</h1>
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <img src="./download (3).jpeg" alt="Instructor 1">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+                <div class="instructor-card">
+                    <img src="./download (4).jpeg" alt="Instructor 2">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+                <div class="instructor-card">
+                    <img src="./Create and sell online courses on platforms like Udemy or Teachable_.jpeg" alt="Instructor 3">
+                    <div class="instructor-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <h4>Instructor Name</h4>
+                    <p>Designation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+    <div class="footer-grid">
+      <div class="footer-column quick-link">
+        <h2>Quick Link</h2>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Terms & Condition</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs & Help</a></li>
+        </ul>
+      </div>
+      <div class="footer-column contact">
+        <h2>Contact</h2>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone-alt"></i> +012 345 67890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-column newsletter">
+        <h2>JOIN NOW</h2>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Your Email">
+          <button>Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+</body>
+</html>
